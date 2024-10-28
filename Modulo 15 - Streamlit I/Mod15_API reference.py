@@ -3,6 +3,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import altair as alt
+import plotly.figure_factory as ff
+import scipy
+from bokeh.plotting import figure
 import pydeck as pdk
 
 
@@ -23,7 +26,7 @@ st.markdown('''
 # **Profissão: Cientista de Dados**
 ### **Módulo 15** | Streamlit I | Exercício
 
-Aluno [Rodrigo Pacheco](https://www.linkedin.com/in/rodrigodatascience/)<br>
+Aluno [Rodrigo Pacheco](https://www.linkedin.com/in/rodrigoec/)<br>
 Data: 17 de outubro de 2023.
 
 ---
@@ -118,7 +121,7 @@ st.bar_chart(chart_data)
 
 '## -Scatterplots on maps:'
 df = pd.DataFrame(
-    np.random.randn(1000, 2) / [50, 50] + [-20.3222, -40.3381],
+    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
     columns=['lat', 'lon'])
 st.map(df)
 
@@ -150,7 +153,62 @@ st.vega_lite_chart(chart_data, {
     },
 })
 
+'## -Plotly:'
+# Add histogram data
+x1 = np.random.randn(200) - 2
+x2 = np.random.randn(200)
+x3 = np.random.randn(200) + 2
+# Group data together
+hist_data = [x1, x2, x3]
+group_labels = ['Group 1', 'Group 2', 'Group 3']
+# Create distplot with custom bin_size
+fig = ff.create_distplot(
+    hist_data, group_labels, bin_size=[.1, .25, .5])
+# Plot!
+st.plotly_chart(fig, use_container_width=True)
 
+'## -Bokeh:'
+x = [1, 2, 3, 4, 5]
+y = [6, 7, 2, 4, 5]
+p = figure(
+    title='simple line example',
+    x_axis_label='x',
+    y_axis_label='y')
+p.line(x, y, legend_label='Trend', line_width=2)
+st.bokeh_chart(p, use_container_width=True)
+
+'## PyDeck:'
+chart_data = pd.DataFrame(
+    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+    columns=['lat', 'lon'])
+st.pydeck_chart(pdk.Deck(
+    map_style=None,
+    initial_view_state=pdk.ViewState(
+        latitude=37.76,
+        longitude=-122.4,
+        zoom=11,
+        pitch=50,
+    ),
+    layers=[
+        pdk.Layer(
+            'HexagonLayer',
+            data=chart_data,
+            get_position='[lon, lat]',
+            radius=200,
+            elevation_scale=4,
+            elevation_range=[0, 1000],
+            pickable=True,
+            extruded=True,
+        ),
+        pdk.Layer(
+            'ScatterplotLayer',
+            data=chart_data,
+            get_position='[lon, lat]',
+            get_color='[200, 30, 0, 160]',
+            get_radius=200,
+        ),
+    ],
+))
 
 '## -GraphViz:'
 st.graphviz_chart('''
@@ -185,19 +243,9 @@ df = pd.DataFrame(
         {"command": "st.time_input", "rating": 3, "is_widget": True},
     ]
 )
-# Replace st.experimental_data_editor with st.data_editor
-edited_df = st.data_editor(df, key="my_data", num_rows="dynamic")
-
-# Use edited_rows to access the edited data
-if "edited_rows" in st.session_state:
-    edited_rows = st.session_state.edited_rows
-else:
-    edited_rows = {}
-
-# Find the row with the highest rating
-if not edited_df.empty:
-    favorite_command = df.loc[df["rating"].idxmax()]["command"]
-    st.markdown(f"Your favorite command is **{favorite_command}**")
+edited_df = st.experimental_data_editor(df, num_rows="dynamic")
+favorite_command = edited_df.loc[edited_df["rating"].idxmax()]["command"]
+st.markdown(f"Your favorite command is **{favorite_command}** 🎈")
 
 '## -Download button:'
 text_contents = '''This is some text'''
@@ -206,7 +254,7 @@ st.download_button('Download some text', text_contents)
 '## -Checkbox:'
 selected = st.checkbox('Concordo')
 
-'## -Animal:'
+'## -Radio:'
 choice = st.radio('Escolha um', ['gatos', 'cachorros'])
 
 '## -Selectbox:'

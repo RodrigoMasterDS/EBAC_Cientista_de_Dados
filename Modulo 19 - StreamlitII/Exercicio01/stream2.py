@@ -33,13 +33,13 @@ def multiselect_filter(data: pd.DataFrame,
 def main():
     st.set_page_config(
         page_title="EBAC | Módulo 19 | Streamlit II | Exercício 1",
-        page_icon="https://github.com/RodrigoMasterDS/EBAC_Cientista_de_Dados/blob/main/Modulo19StreamlitII/Exercicio01/img/telmarketing_icon.png?raw=true",
+        page_icon="https://github.com/RodrigoMasterDS/EBAC_Cientista_de_Dados/blob/main/Modulo 19 - StreamlitII/Exercicio01/img/telmarketing_icon.png?raw=true",
         layout="wide",
         initial_sidebar_state="expanded",
     )
 
     # URL da imagem
-    image_url = 'https://raw.githubusercontent.com/RodrigoMasterDS/EBAC_Cientista_de_Dados/refs/heads/main/Modulo19StreamlitII/Exercicio01/img/Bank-Branding.jpg'
+    image_url = 'https://raw.githubusercontent.com/RodrigoMasterDS/EBAC_Cientista_de_Dados/refs/heads/main/Modulo 19 - StreamlitII/Exercicio01/img/Bank-Branding.jpg'
 
         # Fazendo o download da imagem
     response = requests.get(image_url)
@@ -74,7 +74,7 @@ def main():
     start = timeit.default_timer()
 
     bank_raw = load_data(
-        file_data='https://raw.githubusercontent.com/RodrigoMasterDS/EBAC_Cientista_de_Dados/refs/heads/main/Modulo19StreamlitII/Exercicio01/bank-additional-full.csv', sep=';')
+        file_data='https://raw.githubusercontent.com/RodrigoMasterDS/EBAC_Cientista_de_Dados/refs/heads/main/Modulo 19 - StreamlitII/Exercicio01/bank-additional-full.csv', sep=';')
     bank = bank_raw.copy()
 
     st.write('Time:', timeit.default_timer() - start)

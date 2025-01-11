@@ -4,7 +4,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import requests
 from PIL import Image
+from io import BytesIO
 
 
 sns.set_theme(style='ticks',
@@ -31,15 +33,22 @@ def multiselect_filter(data: pd.DataFrame,
 def main():
     st.set_page_config(
         page_title="EBAC | Módulo 19 | Streamlit II | Exercício 1",
-        page_icon="https://github.com/RodrigoMasterDS/EBAC_Cientista_de_Dados/blob/main/newebac_logo_black_half.png",
+        page_icon="https://github.com/RodrigoMasterDS/EBAC_Cientista_de_Dados/blob/main/Modulo%2019%20-%20StreamlitII/Exercicio%2001/img/telmarketing_icon.png?raw=true",
         layout="wide",
         initial_sidebar_state="expanded",
     )
 
-    # SIDEBAR
-    image = Image.open("../img/Bank-Branding.jpg")
-    st.sidebar.image(image=image)
+    # URL da imagem
+    image_url = 'https://raw.githubusercontent.com/RodrigoMasterDS/EBAC_Cientista_de_Dados/refs/heads/main/Modulo%2019%20-%20StreamlitII/Exercicio%2001/img/Bank-Branding.jpg'
 
+        # Fazendo o download da imagem
+    response = requests.get(image_url)
+    response.raise_for_status()  # Verifica se houve erro no download
+    image = Image.open(BytesIO(response.content))  # Carrega a imagem em memória
+
+        # Exibindo a imagem no Streamlit
+    st.sidebar.image(image, caption='Bank Branding')
+    
     # TÍTULO
     st.markdown('''
     <div style="text-align:center">
@@ -65,7 +74,7 @@ def main():
     start = timeit.default_timer()
 
     bank_raw = load_data(
-        file_data='https://raw.githubusercontent.com/RodrigoMasterDS/EBAC_Cientista_de_Dados/refs/heads/main/Modulo%20%2019%20-%20Streamlit%20II/Exercicio%2001/database/bank-additional-full.csv', sep=';')
+        file_data='https://raw.githubusercontent.com/RodrigoMasterDS/EBAC_Cientista_de_Dados/refs/heads/main/Modulo%2019%20-%20StreamlitII/Exercicio%2001/database/bank-additional-full.csv', sep=';')
     bank = bank_raw.copy()
 
     st.write('Time:', timeit.default_timer() - start)

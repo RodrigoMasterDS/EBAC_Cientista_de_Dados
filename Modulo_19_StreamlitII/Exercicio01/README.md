@@ -2,4 +2,3 @@
 
 # Exercício 1
 > [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=Streamlit&logoColor=white)](https://rodrigoe.streamlit.app/)
-

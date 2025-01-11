@@ -34,7 +34,7 @@ pyarrow==18.1.0
 pydeck==0.9.1
 Pygments==2.19.1
 pyparsing==3.2.1
-python-dateutil==2.9.0.post0
+pythondateutil==2.9.0.post0
 pytz==2024.2
 referencing==0.35.1
 requests==2.32.3
@@ -51,7 +51,7 @@ tenacity==9.0.0
 threadpoolctl==3.5.0
 toml==0.10.2
 tornado==6.4.2
-typing_extensions==4.12.2
+typingextensions==4.12.2
 tzdata==2024.2
 urllib3==2.3.0
 watchdog==6.0.0

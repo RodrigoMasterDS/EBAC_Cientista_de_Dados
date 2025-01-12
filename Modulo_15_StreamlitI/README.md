@@ -2,4 +2,4 @@
 
 # Exercício
 
-> [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=Streamlit&logoColor=white)](https://rodrigo-ebac.streamlit.app//)
+> [![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=Streamlit&logoColor=white)](https://rodrigoebac.streamlit.app//)

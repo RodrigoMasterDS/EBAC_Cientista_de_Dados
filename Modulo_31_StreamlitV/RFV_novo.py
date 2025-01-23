@@ -4,6 +4,7 @@ import streamlit         as st
 from matplotlib.colors import ListedColormap
 from PIL                 import Image
 from io                  import BytesIO
+from pathlib             import Path
 
 # Set no tema do seaborn para melhorar o visual dos plots
 custom_params = {"axes.spines.right": False, "axes.spines.top": False}
@@ -53,11 +54,16 @@ def freq_val_class(x, fv, q_dict):
     
 # Função principal da aplicação
 def main():
+    image_path = Path("C:/Users/rodri/Documents/Github/EBAC_Cientista_de_Dados/Modulo_31_StreamlitV/img/page_icon.png")
+    image = Image.open(image_path)
+    st.sidebar.image(image)
+    
     st.set_page_config(page_title = 'RFV Analysis', \
-        page_icon = 'img/page_icon.png',
+        page_icon = image_path
         #layout="wide",
         initial_sidebar_state='expanded'
     )
+    
 
     # Estilo da página
     st.markdown("""

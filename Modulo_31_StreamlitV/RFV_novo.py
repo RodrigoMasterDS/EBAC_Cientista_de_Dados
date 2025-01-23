@@ -54,17 +54,14 @@ def freq_val_class(x, fv, q_dict):
     
 # Função principal da aplicação
 def main():
-    image_path = Path("C:/Users/rodri/Documents/Github/EBAC_Cientista_de_Dados/Modulo_31_StreamlitV/img/page_icon.png")
-    image = Image.open(image_path)
-    
+        
     # Configuração da página deve vir antes de qualquer outro comando do Streamlit
     st.set_page_config(
         page_title='RFV Analysis',
-        page_icon=image,
         initial_sidebar_state='expanded'
     )
 
-    st.sidebar.image(image)
+
 
     # Estilo da página
     st.markdown("""
@@ -92,8 +89,6 @@ def main():
     st.markdown("---")
 
     # Apresenta a imagem na barra lateral da aplicação
-    image = Image.open("img/side-image.jpg")
-    st.sidebar.image(image)
 
     # Botão para carregar arquivo na aplicação 
     st.sidebar.write("## Upload File")

@@ -37,9 +37,9 @@ def recencia_class(x, r, q_dict):
 
 def freq_val_class(x, fv, q_dict):
     """Classifica como melhor o maior quartil 
-       x = valor da linha,
-       fv = frequencia ou valor,
-       q_dict = quartil dicionario   
+    x = valor da linha,
+    fv = frequencia ou valor,
+    q_dict = quartil dicionario   
     """
     if x <= q_dict[fv][0.25]:
         return 'D'
@@ -51,10 +51,6 @@ def freq_val_class(x, fv, q_dict):
         return 'A'
 
     
-# Configuração para evitar que o Streamlit ajuste automaticamente o tamanho dos gráficos
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
-
 # Função principal da aplicação
 def main():
     st.set_page_config(page_title = 'RFV Analysis', \

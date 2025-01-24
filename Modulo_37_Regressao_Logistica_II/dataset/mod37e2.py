@@ -23,9 +23,13 @@ st.markdown("""
 # Carregar os dados e exibir as primeiras linhas
 st.title("Análise de Credit Scoring")
 st.write("Neste projeto, estamos construindo um credit scoring para cartão de crédito, em um desenho amostral com 15 safras, e utilizando 12 meses de performance.")
-df = pd.read_feather('credit_scoring.ftr')
-st.write("Primeiras linhas do dataset:")
-st.write(df.head())
+
+# Botão para carregar arquivo na aplicação
+st.sidebar.write("## Suba o arquivo")
+data_file_1 = st.sidebar.file_uploader("Credit Scoring data", type = ['ftr'])
+#df = pd.read_feather('credit_scoring.ftr')
+#st.write("Primeiras linhas do dataset:")
+#st.write(df.head())
 
 st.markdown("## Parte I - Exploratória dos Dados")
 

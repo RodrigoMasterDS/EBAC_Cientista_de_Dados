@@ -25,9 +25,9 @@ st.markdown("""
 st.title("Análise de Credit Scoring")
 st.write("Neste projeto, estamos construindo um credit scoring para cartão de crédito, em um desenho amostral com 15 safras, e utilizando 12 meses de performance.")
 
-df = pd.read_feather('/users/rodri/documents/Github/EBAC_Cientista_de_Dados/Modulo_37_Regressao_Logistica_II/credit_scoring.ftr')
+df = pd.read_feather('c://users/rodri/documents/Github/EBAC_Cientista_de_Dados/Modulo_37_Regressao_Logistica_II/credit_scoring.ftr')
 
-caminho = '/users/rodri/documents/Github/EBAC_Cientista_de_Dados/Modulo_37_Regressao_Logistica_II/credit_scoring.ftr'
+caminho = 'c://users/rodri/documents/Github/EBAC_Cientista_de_Dados/Modulo_37_Regressao_Logistica_II/credit_scoring.ftr'
 
 if os.path.exists(caminho):
     print("Arquivo encontrado!")

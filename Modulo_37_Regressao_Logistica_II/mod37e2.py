@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -24,12 +25,24 @@ st.markdown("""
 st.title("Análise de Credit Scoring")
 st.write("Neste projeto, estamos construindo um credit scoring para cartão de crédito, em um desenho amostral com 15 safras, e utilizando 12 meses de performance.")
 
-# Botão para carregar arquivo na aplicação
-st.sidebar.write("## Suba o arquivo")
-data_file_1 = st.sidebar.file_uploader("Credit Scoring data", type = ['ftr'])
-#df = pd.read_feather('credit_scoring.ftr')
-#st.write("Primeiras linhas do dataset:")
-#st.write(df.head())
+df = pd.read_feather('./credit_scoring.ftr')
+
+caminho = './credit_scoring.ftr'
+
+if os.path.exists(caminho):
+    print("Arquivo encontrado!")
+else:
+    print(f"O arquivo não foi encontrado no caminho: {caminho}")
+st.write("Primeiras linhas do dataset:")
+st.write(df.head())
+
+def carregar_dados():
+    df = pd.read_feather('./credit_scoring.ftr')
+    return df
+
+# Carregar os dados
+df = carregar_dados()
+
 
 st.markdown("## Parte I - Exploratória dos Dados")
 

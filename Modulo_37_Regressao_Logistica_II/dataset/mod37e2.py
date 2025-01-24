@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -25,6 +26,13 @@ st.title("Análise de Credit Scoring")
 st.write("Neste projeto, estamos construindo um credit scoring para cartão de crédito, em um desenho amostral com 15 safras, e utilizando 12 meses de performance.")
 
 df = pd.read_feather('./credit_scoring.ftr')
+
+caminho = './credit_scoring.ftr'
+
+if os.path.exists(caminho):
+    print("Arquivo encontrado!")
+else:
+    print(f"O arquivo não foi encontrado no caminho: {caminho}")
 st.write("Primeiras linhas do dataset:")
 st.write(df.head())
 

@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import accuracy_score, roc_auc_score, roc_curve, confusion_matrix, classification_report
 from sklearn.linear_model import LogisticRegression
+import gdown
 
 # Adicionar estilo CSS para cabeçalhos
 st.markdown("""
@@ -23,7 +24,14 @@ st.markdown("""
 # Carregar os dados e exibir as primeiras linhas
 st.title("Análise de Credit Scoring")
 st.write("Neste projeto, estamos construindo um credit scoring para cartão de crédito, em um desenho amostral com 15 safras, e utilizando 12 meses de performance.")
-df = pd.read_feather('credit_scoring.ftr')
+
+# URL do Google Drive compartilhado
+url = 'https://drive.google.com/file/d/1-oke6llmxwJQ57uKcojR0EMsIxb7D1qZ/view?'
+output = 'credit_scoring.ftr'
+
+# Baixando o arquivo
+gdown.download(url, output, quiet=False)
+df = pd.read_feather(output)
 st.write("Primeiras linhas do dataset:")
 st.write(df.head())
 

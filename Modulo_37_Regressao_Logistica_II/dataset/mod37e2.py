@@ -23,7 +23,7 @@ st.markdown("""
 # Carregar os dados e exibir as primeiras linhas
 st.title("Análise de Credit Scoring")
 st.write("Neste projeto, estamos construindo um credit scoring para cartão de crédito, em um desenho amostral com 15 safras, e utilizando 12 meses de performance.")
-df = pd.read_feather('C:/Users/rodri/Documents/Github/EBAC_Cientista_de_Dados/Modulo_37_Regressao_Logistica_II/dataset/credit_scoring.ftr')
+df = pd.read_feather('credit_scoring.ftr')
 st.write("Primeiras linhas do dataset:")
 st.write(df.head())
 
